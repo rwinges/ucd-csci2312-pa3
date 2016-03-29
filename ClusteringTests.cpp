@@ -2792,14 +2792,14 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
 
     ec.DESC("--- Test - Cluster - Stream IO ---");
 
-    for (int run = 0; run < numRuns; run++) {
-
+    for (int run = 0; run < numRuns; run++)
+	{
         ec.DESC("read from a file");
-
         {
             std::ifstream csv("points4.csv");
             Cluster c(5);
-            if (csv.is_open()) {
+            if (csv.is_open())
+            {
                 csv >> c;
                 csv.close();
             }
@@ -2809,11 +2809,11 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
         }
 
         ec.DESC("read, write, and read again");
-
         {
             std::ifstream csv("points4.csv");
             Cluster c(5);
-            if (csv.is_open()) {
+            if (csv.is_open())
+			{
                 csv >> c;
                 csv.close();
             }
@@ -2829,22 +2829,25 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
             std::ifstream csv2("points4_1.csv");
             int size = 0;
             std::string line;
-            if (csv2.is_open()) {
+
+			if (csv2.is_open())
+			{
                 while (getline(csv2, line)) size ++;
                 csv2.close();
             }
-            pass = pass && (size == 5);
+
+			pass = pass && (size == 5);
             if (! pass) std::cout << "size = " << size;
 
             ec.result(pass);
         }
 
         ec.DESC("check element order");
-
         {
             std::ifstream csv("points4.csv");
             Cluster c(5);
-            if (csv.is_open()) {
+            if (csv.is_open())
+			{
                 csv >> c;
                 csv.close();
             }
@@ -2854,13 +2857,14 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
 
             ec.result(pass);
         }
-        ec.DESC("read from a file: 2 caught exceptions");
 
+        ec.DESC("read from a file: 2 caught exceptions");
         {
             std::ifstream csv("points4_ex.csv");
             Cluster c(5);
 
-            if (csv.is_open()) {
+            if (csv.is_open())
+			{
                 csv >> c;
                 csv.close();
 
@@ -2869,7 +2873,8 @@ void test_cluster_IO(ErrorContext &ec, unsigned int numRuns) {
 
                 if (! pass)
                     std::cout << c[0].getId() << ' ' << c[1].getId() << std::endl;
-            } else {
+            } else
+			{
                 pass = false;
             }
 

@@ -8,12 +8,14 @@
 
 #include <iostream>
 
-namespace Clustering {
+namespace Clustering
+{
 
-    class Point {
+    class Point
+	{
         unsigned int __id;
-        unsigned int __dim;        // number of dimensions of the point
-        double *__values; // values of the point's dimensions
+        unsigned int __dim;		// number of dimensions of the point
+        double* __values;		// values of the point's dimensions
 
         static unsigned int __idGen; // id generator
 
@@ -22,12 +24,13 @@ namespace Clustering {
 
         static void rewindIdGen();
 
+        Point();                //TODO Check the LNode constructor without this once IO is operational
         Point(unsigned int);
-        Point(unsigned int, double *);
+        Point(unsigned int, double*);   //array-initialized constructor
 
         // Big three: cpy ctor, overloaded operator=, dtor
         Point(const Point &);
-        Point &operator=(const Point &);
+        Point& operator=(const Point &);
         ~Point();
 
         // Accessors & mutators
