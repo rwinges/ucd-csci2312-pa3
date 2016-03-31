@@ -6,27 +6,30 @@ namespace Clustering
 
 	OutOfBoundsEx::OutOfBoundsEx(unsigned int c, int r)
 	{
-
+		__current = c;
+		__rhs = r;
+		__name = "OutOfBoundsEx";
 	}
 
 	unsigned int OutOfBoundsEx::getCurrent() const
 	{
-//		return 0;
+		return __current;
 	}
 
 	int OutOfBoundsEx::getRhs() const
 	{
-//		return 0;
+		return __rhs;
 	}
 
 	std::string OutOfBoundsEx::getName() const
 	{
-//		return std::basic_string<char, char_traits < _CharT>, allocator < _CharT >> ();
+		return __name;
 	}
 
 	std::ostream& operator<<(std::ostream &os, const OutOfBoundsEx &ex)
 	{
-//		return <#initializer#>;
+		os << ex.__name;
+		return os;
 	}
 
 

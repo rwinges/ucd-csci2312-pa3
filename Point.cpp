@@ -136,33 +136,21 @@ namespace Clustering
 	//---------- SET VALUE -------------------------------------------------------------------------------------------
 	void Point::setValue(unsigned int i, double value)
 	{
-//		__values[i] = value;
+		//Throw an exception if the requested index is greater than the number of dimensions or less than 0.
+		if (i >= __dim || i < 0) throw OutOfBoundsEx(__dim,i);
 
-		//Make sure the requested position is within the bounds of the values array
-		if (i < __dim)
-		{
-			__values[i] = value;
-		}
-		else
-		{
-			std::cout << "\n ERROR: setValue(): Requested position is out of bounds." << std::endl << std::endl;
-		}
+		//Otherwise, set the value as requested
+		__values[i] = value;
 	}
 
 	//---------- GET VALUE -------------------------------------------------------------------------------------------
 	double Point::getValue(unsigned int i) const
 	{
-//		return __values[i];
+		//Throw an exception if the requested index is greater than the number of dimensions or less than 0.
+		if (i >= __dim || i < 0) throw OutOfBoundsEx(__dim,i);
 
-		//Make sure the requested position is within the bounds of the values array
-		if (i < __dim)
-		{
-			return __values[i];
-		}
-		else
-		{
-			std::cout << "\n ERROR: getValue(): Requested position is out of bounds." << std::endl << std::endl;
-		}
+		//Otherwise, return the value as requested
+		return __values[i];
 	}
 
 //============== FUNCTIONS ===========================================================================================
@@ -224,12 +212,20 @@ namespace Clustering
 	//---------- [] OVERLOADED SUBSCRIPT OPERATORS -------------------------------------------------------------------
 	double& Point::operator[](unsigned int index)
 	{
+		//Throw an exception if the requested index is greater than the number of dimensions or less than 0.
+		if (index >= __dim || index < 0) throw OutOfBoundsEx(__dim,index);
+
+		//Otherwise, return the value as requested
 		return __values[index];
 	}
 
 	const double &Point::operator[](unsigned int index) const
 	{
-//		return <#initializer#>;
+		//Throw an exception if the requested index is greater than the number of dimensions or less than 0.
+		if (index >= __dim || index < 0) throw OutOfBoundsEx(__dim,index);
+
+		//Otherwise, return the value as requested
+		return __values[index];
 	}
 
 	//---------- FRIENDS ---------------------------------------------------------------------------------------------
