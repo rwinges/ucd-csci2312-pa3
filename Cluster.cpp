@@ -9,10 +9,10 @@ namespace Clustering
 	//[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
 
 	//---------- CONSTRUCTOR ----------------------------------------------------------------------------------------
-	LNode::LNode(const Point &p, LNodePtr n = nullptr)
+	LNode::LNode(const Point &p, LNodePtr n = nullptr):point(p),next(n)
 	{
-		point = p;
-		next = n;
+//		point = p;
+//		next = n;
 	}
 
 
@@ -225,10 +225,9 @@ namespace Clustering
 	//[[[[[[[[[[ Centroid (inner-class) [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
 	//[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
 
-	Cluster::Centroid::Centroid(unsigned int d, const Cluster &c):__dimensions(d),__c(c)
+	Cluster::Centroid::Centroid(unsigned int d, const Cluster &c):__dimensions(d),__c(c),__p(d)
 	{
-//		__dimensions = d;
-//		const Cluster& __c = c;
+		__valid = false;	//Not sure if this is proper
 	}
 
 	const Point Cluster::Centroid::get() const

@@ -24,7 +24,6 @@ namespace Clustering
 
         static void rewindIdGen();
 
-        Point();                //TODO Check the LNode constructor without this once IO is operational
         Point(unsigned int);
         Point(unsigned int, double*);   //array-initialized constructor
 

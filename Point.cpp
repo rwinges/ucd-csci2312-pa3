@@ -1,4 +1,5 @@
 #include "Point.h"
+#include "Exceptions.h"
 #include <cmath>
 
 using std::sqrt;
@@ -10,29 +11,20 @@ namespace Clustering
 
 //============== CONSTRUCTORS ========================================================================================
 
-	//---------- DEFAULT (NO-ARGUMENT) CONSTRUCTOR -------------------------------------------------------------------
-	Point::Point()
-	{
-		//Assign an ID to the point and increment the static ID variable
-		__id = __idGen;
-		++__idGen;
-
-		//Initialize the Point object with 0 dimensions (might not be necessary)
-		__dim = 0;
-
-		//Initialize the Point object's values array to NULL
-		__values = NULL;
-	}
-
 	//---------- ONE-ARGUMENT CONSTRUCTOR ----------------------------------------------------------------------------
 	Point::Point(unsigned int i)
 	{
+		//Assign the value passed in as the number of dimensions of the point
+		if (i == 0) throw ZeroDimensionsEx();
+//		{
+//			ZeroDimensionsEx ex;
+//			throw &ex;
+//		}
+		__dim = i;
+
 		//Assign an ID to the point and increment the static ID variable
 		__id = __idGen;
 		++__idGen;
-
-		//Assign the value passed in as the number of dimensions of the point
-		__dim = i;
 
 		//Dynamically allocate an array of doubles based on the number of dimensions passed in
 		__values = new double[__dim];

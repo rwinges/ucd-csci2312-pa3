@@ -103,17 +103,19 @@ namespace Clustering
 
 	ZeroDimensionsEx::ZeroDimensionsEx()
 	{
-
+		__name = "ZeroDimensionsEx";
 	}
 
 	std::string ZeroDimensionsEx::getName() const
 	{
-//		return std::basic_string<char, char_traits < _CharT>, allocator < _CharT >> ();
+		return __name;
+//		return "ZeroDimensionsEx";
 	}
 
 	std::ostream& operator<<(std::ostream &os, const ZeroDimensionsEx &ex)
 	{
-//		return <#initializer#>;
+		os << ex.__name;
+		return os;
 	}
 
 
