@@ -83,6 +83,9 @@ namespace Clustering
 		//Check for self-assignment
 		if (this == &specimen) return *this;
 
+		//Throw an exception if the dimensionality of both points is not equal
+		if (__dim != specimen.getDims()) throw DimensionalityMismatchEx(__dim,specimen.getDims());
+
 		//Copy the passed in point's ID
 		__id = (unsigned int)specimen.getId();
 
@@ -232,6 +235,9 @@ namespace Clustering
 
 	Point& operator+=(Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		if (point1.getDims() == point2.getDims())
 		{
 			for (int i = 0; i < point1.getDims(); ++i)
@@ -246,6 +252,9 @@ namespace Clustering
 
 	Point& operator-=(Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		if (point1.getDims() == point2.getDims())
 		{
 			for (int i = 0; i < point1.getDims(); ++i)
@@ -261,6 +270,9 @@ namespace Clustering
 	//---------- + OVERLOADED ADDITION OPERATOR (friend) -------------------------------------------------------------
 	const Point operator+(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		Point newPoint(point1.getDims());
 
 		if (point1.getDims() == point2.getDims())
@@ -278,6 +290,9 @@ namespace Clustering
 	//---------- - OVERLOADED SUBTRACTION OPERATOR (friend) ----------------------------------------------------------
 	const Point operator-(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		Point newPoint(point1.getDims());
 
 		if (point1.getDims() == point2.getDims())
@@ -295,6 +310,9 @@ namespace Clustering
 	//---------- == OVERLOADED EQUALITY OPERATOR (friend) ------------------------------------------------------------
 	bool operator==(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		bool sameness = true;
 
 		if (point1.getId() == point2.getId())
@@ -318,6 +336,9 @@ namespace Clustering
 	//---------- < OVERLOADED LESS THAN OPERATOR (friend) ------------------------------------------------------------
 	bool operator<(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		bool lessThan = false;
 
 		//If the same point is being compared to itself, there's no need to compare each dimension
@@ -335,6 +356,9 @@ namespace Clustering
 	//---------- > OVERLOADED GREATER THAN OPERATOR (friend) ---------------------------------------------------------
 	bool operator>(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		bool greaterThan = false;
 
 		//If the same point is being compared to itself, there's no need to compare each dimension
@@ -352,6 +376,9 @@ namespace Clustering
 	//---------- <= OVERLOADED LESS THAN OR EQUAL TO OPERATOR (friend) -----------------------------------------------
 	bool operator<=(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		bool lessThanOrEqual = true;
 
 		//If the same point is being compared to itself, there's no need to compare each dimension
@@ -369,6 +396,9 @@ namespace Clustering
 	//---------- >= OVERLOADED GREATER THAN OR EQUAL TO OPERATOR (friend) --------------------------------------------
 	bool operator>=(const Point &point1, const Point &point2)
 	{
+		//Throw an exception if the dimensionality of both points is not equal
+		if (point1.__dim != point2.__dim) throw DimensionalityMismatchEx(point1.__dim,point2.__dim);
+
 		bool greaterThanOrEqual = true;
 
 		//If the same point is being compared to itself, there's no need to compare each dimension
